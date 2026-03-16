@@ -1,0 +1,75 @@
+<style>
+/* === 티스토리 스타일 CSS === */
+body{font-family:'Noto Sans','Noto Sans KR','Montserrat',Arial,"Apple SD Gothic Neo","Malgun Gothic",Dotum,Helvetica,sans-serif;color:#333;-webkit-font-smoothing:antialiased;line-height:1.8}
+a{color:#333;text-decoration:none}a:hover{text-decoration:underline}
+
+/* 기존 WP 헤더 숨김 */
+body header.wp-block-template-part{display:none!important}
+
+/* 커스텀 헤더 */
+.ts-header{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#fff;border-bottom:1px solid rgba(51,51,51,.08)}
+.ts-blog-title{font-size:20px;font-weight:700;color:#333;text-decoration:none;position:absolute;left:50%;transform:translateX(-50%)}
+.ts-blog-title:hover{text-decoration:none}
+.ts-menu-btn{background:none;border:none;cursor:pointer;padding:6px;display:flex;flex-direction:column;gap:5px}
+.ts-menu-btn span{display:block;width:22px;height:2px;background:#333;transition:.3s}
+.ts-search-btn{background:none;border:none;cursor:pointer;padding:6px;color:#333}
+
+/* 사이드바 */
+.ts-sidebar{position:fixed;top:0;left:-280px;width:280px;height:100vh;background:#fff;z-index:100000;transition:left .3s ease;overflow-y:auto;padding:24px 20px;box-shadow:2px 0 12px rgba(0,0,0,.1)}
+.ts-sidebar.open{left:0}
+.ts-sidebar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);z-index:99999}
+.ts-sidebar-overlay.open{display:block}
+.ts-sidebar-close{position:absolute;top:12px;left:16px;background:none;border:none;font-size:28px;cursor:pointer;color:#333;line-height:1}
+
+/* 사이드바 카테고리 */
+.ts-cat-title{font-size:14px;font-weight:700;color:#333;margin:40px 0 16px;padding-bottom:8px;border-bottom:1px solid #eee}
+.ts-cat-list{list-style:none;padding:0;margin:0}
+.ts-cat-list>li{padding:7px 0}
+.ts-cat-list>li>a{font-size:15px;font-weight:600;color:#333;text-decoration:none}
+.ts-cat-list>li>a span{color:#909090;font-weight:400}
+.ts-cat-list>li>a:hover{color:#000}
+.ts-cat-list ul{list-style:none;padding:2px 0 0 12px;margin:0}
+.ts-cat-list ul li{padding:3px 0}
+.ts-cat-list ul li a{font-size:13px;color:#909090;text-decoration:none}
+.ts-cat-list ul li a:hover{color:#333}
+
+/* SNS */
+.ts-sns{margin-top:30px;padding-top:16px;border-top:1px solid #eee;display:flex;gap:12px}
+.ts-sns a:hover svg{fill:#333}
+.ts-powered{margin-top:20px;font-size:11px;color:#bbb;letter-spacing:1px}
+
+/* 검색 오버레이 */
+.ts-search-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,.97);z-index:100001;justify-content:center;align-items:center}
+.ts-search-overlay.open{display:flex}
+.ts-search-input{width:80%;max-width:500px;font-size:24px;border:none;border-bottom:2px solid #333;padding:12px 0;outline:none;background:transparent;color:#333}
+.ts-search-close{position:absolute;top:20px;right:24px;background:none;border:none;font-size:32px;cursor:pointer;color:#333}
+
+/* 메인 콘텐츠 */
+.wp-site-blocks{max-width:860px;margin:0 auto;padding:0 20px}
+.wp-block-post-content,.entry-content{max-width:800px;margin:0 auto;font-size:16px;line-height:1.8}
+
+/* 글 제목 */
+.wp-block-post-title,.entry-title,h1.entry-title,h2.entry-title{font-size:28px!important;font-weight:700;line-height:1.4;color:#333;margin:7px 0 12px}
+.wp-block-post-title a{text-decoration:none;color:#333}
+.wp-block-post-date,.wp-block-post-terms,.entry-meta{font-size:13px;color:rgba(51,51,51,.5)}
+
+/* 이미지 */
+.entry-content figure,.wp-block-post-content figure{margin:0 0 20px;max-width:100%;clear:both}
+.entry-content figure figcaption,.wp-block-post-content figure figcaption{font-size:13px;padding-top:10px;text-align:center;color:rgba(51,51,51,.5)}
+.entry-content img,.wp-block-post-content img{max-width:100%;height:auto;cursor:zoom-in}
+figure.imageblock.alignCenter{margin:0 auto 20px;text-align:center;display:table}
+
+/* 라이트박스 */
+.tistory-lb{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);z-index:999999;cursor:zoom-out;justify-content:center;align-items:center}
+.tistory-lb.active{display:flex}
+.tistory-lb img{max-width:95%;max-height:95vh;object-fit:contain;border-radius:4px;box-shadow:0 4px 20px rgba(0,0,0,.5);cursor:default}
+
+/* 기타 */
+.entry-content blockquote{border:1px solid #ddd;background:#fcfcfc;padding:21px 25px;color:#666;line-height:1.75;margin:0 0 20px;font-style:normal}
+.entry-content hr{border:none;border-top:1px solid rgba(51,51,51,.1);margin:30px 0}
+.wp-block-post-terms.taxonomy-post_tag a,.tag-links a{display:inline-block;padding:5px 12px;border:1px solid rgba(51,51,51,.1);font-size:13px;color:rgba(51,51,51,.7);margin:0 8px 5px 0;border-radius:2px}
+.wp-block-post-terms.taxonomy-post_tag a:hover{border-color:#333;color:#333;text-decoration:none}
+footer.wp-block-template-part{border-top:1px solid rgba(51,51,51,.1);padding:20px 0;margin-top:60px;font-size:13px;color:rgba(51,51,51,.5);text-align:center}
+p[data-ke-size='size18']{font-size:1.12em}p[data-ke-size='size14']{font-size:.87em}p[data-ke-size='size16']{font-size:1em}
+@media(max-width:768px){.wp-block-post-title,.entry-title{font-size:22px!important}.entry-content{font-size:15px}}
+</style>

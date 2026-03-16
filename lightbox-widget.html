@@ -1,0 +1,38 @@
+
+<!-- 이미지 라이트박스 (클릭시 확대) -->
+<div class="tistory-lightbox-overlay" id="tistoryLightbox">
+    <img src="" alt="" id="tistoryLightboxImg" />
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var overlay = document.getElementById('tistoryLightbox');
+    var lbImg = document.getElementById('tistoryLightboxImg');
+
+    document.querySelectorAll('a[data-lightbox]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+            e.preventDefault();
+            lbImg.src = this.href;
+            overlay.classList.add('active');
+        });
+    });
+
+    // 이미지가 아닌 모든 글 내 이미지도 클릭 가능하게
+    document.querySelectorAll('.entry-content img, .wp-block-post-content img').forEach(function(img) {
+        if (!img.closest('a[data-lightbox]') && img.src.includes('your-site.com')) {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', function() {
+                lbImg.src = this.src;
+                overlay.classList.add('active');
+            });
+        }
+    });
+
+    overlay.addEventListener('click', function() {
+        overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') overlay.classList.remove('active');
+    });
+});
+</script>

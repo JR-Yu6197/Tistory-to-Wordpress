@@ -1,0 +1,23 @@
+# 개인 블로그 백업 원본 (개인정보)
+jr-drew-1-1/
+
+# IDE / 도구 설정
+.vscode/
+.claude/
+
+# 개인 기록
+README-personal.md
+
+# 생성된 대용량 파일
+wordpress-import.xml
+
+# 플러그인 빌드
+tistory-style-plugin/
+tistory-style-plugin.zip
+
+# 이미지 복사본
+tistory-images/
+
+# Python
+__pycache__/
+*.pyc
