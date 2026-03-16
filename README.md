@@ -8,7 +8,7 @@
 
 | Before (Tistory) | After (WordPress) |
 |---|---|
-| `your-blog.tistory.com` | `your-site.com` |
+| `https://jr-drew.tistory.com/` | `https://jrdrew.xyz` |
 
 ## Features
 
